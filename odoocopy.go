@@ -179,11 +179,13 @@ func main() {
 func copyRecords(source odoorpc.Odoo, destination odoorpc.Odoo, jobs int, model string, query QueryDef) error {
 	umdl := strings.ReplaceAll(model, "_", ".")
 
-	filtp, err := odoosearchdomain.ParseDomain(query.Filter)
-	if err != nil {
-		fmt.Println("Error searching domain:", err)
-		return err
-	}
+	filtp, _ := odoosearchdomain.ParseDomain(query.Filter)
+	// if filtp != nil {
+	// 	fmt.Println("Error searching domain:", err)
+	// 	return err
+	// }
+
+	// filter with nothing in it is giving errors ,this is in the library
 
 	fields := odoosearchdomain.Fields(query.Fields)
 	updateKey := odoosearchdomain.Fields(query.UpdateKey)
@@ -215,29 +217,29 @@ func copyRecords(source odoorpc.Odoo, destination odoorpc.Odoo, jobs int, model 
 					}
 
 					// Check for duplicates based on updateKey
-					if len(updateKey) > 0 {
-						domain := make([]any, 0, len(updateKey))
-						for _, key := range updateKey {
-							if value, exists := record[key]; exists {
-								domain = append(domain, []any{key, "=", value})
-							}
-						}
-						if len(domain) > 0 {
-							rid, err := destination.GetID(umdl, domain)
-							if err != nil {
-								resultChan <- fmt.Errorf("error searching for existing records: %v", err)
-								continue
-							}
-							if rid > -1 {
-								_, err := destination.Write(umdl, rid, destinationRecord)
-								resultChan <- err
-							} else {
-								_, err = destination.Create(umdl, destinationRecord)
-								resultChan <- err
-							}
+					domain := make([]any, 0, len(updateKey))
+					for _, key := range updateKey {
+						if value, exists := record[key]; exists {
+							domain = append(domain, []any{key, "=", value})
 						}
 					}
-
+					if len(domain) > 0 {
+						rid, err := destination.GetID(umdl, domain)
+						if err != nil {
+							resultChan <- fmt.Errorf("error searching for existing records: %v", err)
+							continue
+						}
+						if rid > -1 {
+							_, err := destination.Write(umdl, rid, destinationRecord)
+							resultChan <- err
+						} else {
+							_, err = destination.Create(umdl, destinationRecord)
+							resultChan <- err
+						}
+					} else {
+						_, err = destination.Create(umdl, destinationRecord)
+						resultChan <- err
+					}
 				}
 			}()
 		}
