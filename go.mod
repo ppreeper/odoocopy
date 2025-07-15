@@ -5,7 +5,7 @@ go 1.24.4
 require (
 	github.com/charmbracelet/fang v0.3.0
 	github.com/ppreeper/odoorpc v0.0.0-20250709144550-fec27a654569
-	github.com/ppreeper/odoosearchdomain v0.0.0-20250715231158-554aabc9b488
+	github.com/ppreeper/odoosearchdomain v0.0.0-20250715231625-a26eaa13d4c2
 	github.com/schollz/progressbar/v3 v3.18.0
 	github.com/spf13/cobra v1.9.1
 	github.com/spf13/viper v1.20.1

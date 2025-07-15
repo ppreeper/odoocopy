@@ -75,6 +75,8 @@ github.com/ppreeper/odoosearchdomain v0.0.0-20250709143406-27da4c9c8ed2 h1:p3sN2
 github.com/ppreeper/odoosearchdomain v0.0.0-20250709143406-27da4c9c8ed2/go.mod h1:xPiAaoBcc6dYKfBh5UE3VVCMxqaLAF/JOrf94bYZ/7M=
 github.com/ppreeper/odoosearchdomain v0.0.0-20250715231158-554aabc9b488 h1:gaq4oANK+9A7WGq9fo6S34lSoCxSNNNez4D5NGm/aEM=
 github.com/ppreeper/odoosearchdomain v0.0.0-20250715231158-554aabc9b488/go.mod h1:xPiAaoBcc6dYKfBh5UE3VVCMxqaLAF/JOrf94bYZ/7M=
+github.com/ppreeper/odoosearchdomain v0.0.0-20250715231625-a26eaa13d4c2 h1:LE7dEjmIw2xXYbyc/gbCGD4ZnSOn7MC9PHxtSBZyS9A=
+github.com/ppreeper/odoosearchdomain v0.0.0-20250715231625-a26eaa13d4c2/go.mod h1:xPiAaoBcc6dYKfBh5UE3VVCMxqaLAF/JOrf94bYZ/7M=
 github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=
 github.com/rivo/uniseg v0.4.7 h1:WUdvkW8uEhrYfLC4ZzdpI2ztxP1I582+49Oc5Mq64VQ=
 github.com/rivo/uniseg v0.4.7/go.mod h1:FN3SvrM+Zdj16jyLfmOkMNblXMcoc8DfTHruCPUcx88=
